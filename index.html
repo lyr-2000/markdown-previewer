@@ -10,15 +10,19 @@
 </head>
 
 <body>
-    <form action="">
-        <textarea name="editor" id="editor" cols="30" rows="10">
+    <header class="header">
+        <h2>Markdown Preview</h2>
+    </header>
+    <div class="container">
+        <div class="sub-container" id="editor-container">
+            <textarea name="editor" id="editor" cols="30" rows="10">
+            
+                    </textarea>
+        </div>
+        <div class="sub-container" id="preview">
 
-        </textarea>
-    </form>
-    <div id="preview">
-
+        </div>
     </div>
-
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>

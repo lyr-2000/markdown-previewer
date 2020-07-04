@@ -7,33 +7,33 @@
 
 //The default text in the #editor: 
 //a header (H1 size), a sub header (H2 size), a link, inline code, 
-//a code block, a list item, a blockquote, an image, and bolded text.
+//a code block, a list item, a blockquote, an image, and bolded text. => OK
 
-const placeholder =
-    `# Markdown Previewer with Jquery
 
-    # This is a sub-heading...
+const placeholder = `
+# Markdown Previewer with Jquery
+
+# A sub-heading...
   
-    Heres some code, \`<div></div>\`, between 2 backticks.
+A line of code, \`<div></div>\`, between 2 backticks.
 
-    \`\`\`
-    // this is multi-line code:
+\`\`\`
+// this is multi-line code:
 
-    function anotherExample(firstLine, lastLine) {
-        if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
-            return multiLineCode;
-        }
-    }
-    \`\`\`
-  
-    You can also make text **bold**...
+function doSomeTask(param) {
+    //some code
+}
+\`\`\`
 
-    There's also [links](https://www.facebook.com)
-    > Block Quotes!
+You can also make text **bold**...
 
-    1. Item 1
-    2. Item 2 
-    3. Item 3
+There's also [links](https://www.facebook.com)
+
+> Block Quotes!
+
+1. Item 1
+2. Item 2 
+3. Item 3
 `
 
 //events =>  
@@ -42,7 +42,7 @@ const placeholder =
 //paste => paste content in textarea
 $("#editor").on("change keyup paste", function () {
     var currentVal = $(this).val();
-    $("#preview").html(currentVal);
+    $("#preview").html(convertMarkdownToHTML(currentVal));
 });
 
 function convertMarkdownToHTML(markdown) {
@@ -50,14 +50,12 @@ function convertMarkdownToHTML(markdown) {
 }
 
 function setDefaultTextOnLoad() {
-    $("#editor").val(convertMarkdownToHTML(placeholder))
+    $("#editor").val(placeholder)
     $("#preview").html(convertMarkdownToHTML(placeholder))
 }
 
 //!!! => onload() deprecated
 $(window).on('load', function () {
     setDefaultTextOnLoad();
-
-    // $("#preview").html(convertMarkdownToHTML())
 });
 
