@@ -18,10 +18,13 @@ $("#editor").on("change keyup paste", function () {
     $("#preview").html(currentVal);
 });
 
-
+function convertMarkdownToHTML() {
+    return marked('# Marked in browser\n\nRendered by **marked**.');
+}
 
 //!!! => onload() deprecated
 $(window).on('load', function () {
-    console.log("loaded...");
+    console.log(convertMarkdownToHTML());
+    $("#preview").html(convertMarkdownToHTML())
 });
 
